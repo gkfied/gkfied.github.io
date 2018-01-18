@@ -1,0 +1,153 @@
+Immediately start packet capture using first interface
+======================================================
+
+tcpdump
+tshark
+
+
+List interfaces
+===============
+
+tcpdump -D
+tshark -D
+
+
+Capture on specific interface
+=============================
+
+tcpdump -i eth0
+tshark -i eth0
+
+
+Write packets to file
+=====================
+
+tcpdump -w packets.pcap
+tshark -w packets.pcap
+
+
+Read packets from a file
+========================
+
+tcpdump -r packets.pcap
+tshark -r packets.pcap
+
+
+Read 10 packets only
+====================
+
+tcpdump -r packets.pcap -c 10
+tshark -r packets.pcap -c 10
+
+
+Write 10 packets only
+=====================
+
+tcpdump -w packets.pcap -c 10
+tshark -w packets.pcap -c 10
+
+
+Increase verbosity
+==================
+
+tcpdump -r packets.pcap -v (-vvv)
+tshark -r packets.pcap -V
+
+
+
+ASCII and hex representation
+============================
+
+tcpdump -X -r packets.pcap
+tshark -x -r packets.pcap
+
+
+
+Disable hostname resolution
+===========================
+
+tshark -n 
+tcpdump -n
+
+Disable port name resolution as well
+
+tcpdump -nn
+
+(-N all name resolution disable expect what we specify)
+
+tshark -Nt
+tshark -Ntm
+
+m : MAC address
+n : Network address translation
+t : Transport layer (port name) resolution
+N : Use external resolver
+C : Concurrent DNS lookups
+
+
+
+Filters
+=========
+
+
+tcpdump -w packets.pcap 'tcp dst port 80'
+tcpdump -r packets.pcap 'tcp dst port 80'
+tcpdump -r packets.pcap 'tcp dst port 80' -w http_packets.pcap
+
+
+Capture filters "-f" 
+Display filters "-Y"
+
+tshark -f "tcp port 80"
+
+tshark -r packets.pcap -Y "tcp.dstport == 80"
+tshark -w packets.pcap -Y "tcp.dstport == 80"
+tshark arp or icmp
+
+
+
+Time formats
+============
+
+
+tcpdump (shown by default)
+tshark -t ad
+
+ad : absolute time
+ud : absolute time (UTC)
+
+
+
+
+Summary statistics
+==================
+
+tshark -z help
+
+IP conversations
+
+tshark -r packets.pcap -z conv,ip
+
+HTTP request/response in tree format
+
+tshark -r packets.pcap -z http,tree
+
+
+
+Follow TCP stream
+==================
+
+tshark -r packets.pcap -z follow,tcp,ascii,0
+tshark -r packets.pcap -z follow,udp,ascii,192.168.1.5:23429,4.2.2.1:53
+
+
+
+View traffic only between two hosts and exclude
+===============================================
+
+tcpdump host 10.0.0.1 && host 10.0.0.2
+tcpdump not net 10.10 && not host 192.168.1.2
+
+tshark "host <HOST1> && host <HOST2>"
+tshark -n "net <NET1> && net <NET2>"
+
