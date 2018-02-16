@@ -1,0 +1,48 @@
+
+bash shortcuts
+===============
+
+
+Ctrl + a		Beginning of line
+Ctrl + e		End of line
+
+Alt + b			Move back one word
+Alt + f			Move forward one word
+
+Ctrl + w		Delete word before current cursor postion
+
+
+Ctrl + u		Delete text from current cursor postion to beginning of the line
+Ctrl + k		Delete text from current cursor postion to end of the line
+
+Ctrl + y		Paste command or text which was cut using one of deletion commands
+
+
+Ctrl + r		Search history backwards
+Ctrl + p		Run through previous commands in history
+Ctrl + n		Run through next commands in history
+
+Alt + .			Use last word of previous command
+
+!!			Re-run last command
+!cmd			Re-run command starting with cmd
+
+
+
+Alt + c			Capitalize first letter of a command
+Alt + u			Capitalize entire word at current cursor postion
+Alt + l			Lower case from current position to end of word
+Alt + t			Swap current word with previous
+
+
+Ctrl + l		Clear screen
+Ctrl + s		Stop output to screen for scrolling output
+Ctrl + q		Allow output to screen
+
+Ctrl + c		Terminate the command
+Ctrl + z		Suspend/stop the command
+Ctrl + d		EOF, exit the shell
+
+Ctrl + xx		Move between current cursor position to start of the line
+
+
